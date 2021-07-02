@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vẽ đường tròn</title>
+</head>
+<body>
+    <canvas id="mycanvas" width="200" height="300" ></canvas>
+</body>
+</html>
+<script>
+    // lấy đối tượng html
+    let canvas = document.getElementById('mycanvas');
+    //  tạo ra hình hoạt 2d
+    let ctx =  canvas.getContext('2d');
+    // tạo đối tượng nét vẽ
+    ctx.beginPath();
+    // tạo đường cong với hàm arc 
+    ctx.arc(90, 50 , 30 , 0, 2*Math.PI);
+    // vẽ hình lên trang web hoặc sử dụng hàm fill(): tô màu nền khi định nghĩa bằng hàm fillStyle(mặc định là mầu đen);
+    ctx.stroke();
+</script>

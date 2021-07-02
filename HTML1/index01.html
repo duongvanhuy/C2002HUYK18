@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let number = parseInt(prompt("Nhập vào giá trị"));
+        // switch(number){
+        //     case 1:
+        //     case 2:
+        //         alert("Số này nhỏ");
+        //         break;
+        //     case 3:
+        //         alert('Nhập đúng');
+        //         break;
+        //     case 4:
+        //     case 5:
+        //         alert("Số lớn quá");
+        //         break;
+        //     default:
+        //         alert('Bạn nhập sai');
+        // }
+
+        // let hocLuc =prompt('Nhập vào học lực');
+        // switch(hocLuc){
+        //     case 'F':
+        //         alert("Bạn phải học lại");
+        //         break;
+        //     case 'A':
+        //     case 'B':
+        //     case 'C':
+        //     case 'D':
+        //     case 'E':
+        //         alert('Bạn qua môn');
+        //         break;
+        //     default:
+        //         alert('Bạn nhập sai');
+        // }
+        const luongCB = 5000000;
+        let luong;
+        let chucvu = prompt('Nhập vào chức vụ');
+        switch (chucvu) {
+            case 'Giám đốc':
+                luong = luongCB * 10;
+                break;
+            case 'Trưởng phòng':
+                luong = luongCB * 6;
+                break;
+            case 'Nhân viên':
+                luong = luongCB * 4;
+                break;
+            default:
+                document.write('Chức vụ không tồn tại');
+        }
+        luong.toLocaleString();
+        document.write('Chức vụ của bạn là: ' + chucvu + ' với mức lương là ' + luong + 'VNĐ');
+    </script>
+</body>
+
+</html>

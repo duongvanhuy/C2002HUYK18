@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //  yêu cầu 1: xuất ra màn hình dòng thông báo
+        alert('Chương tình tính giá điện sinh hoạt')
+        document.write('Chương tình tính giá điện sinh hoạt'+ '<br>')
+        // 
+        // yêu cầu 2: khai báo 1 biến nhập vào từ bàn phím
+        let so_tieu_thu = parseFloat(prompt('Nhập vào số điện tiêu thụ của bạn'));
+        //  tính tổng tiền điện phải trả
+        let Sum_money ;
+        if(so_tieu_thu<=0){
+            alert('Số điện tiêu thụ không hợp lệ');
+        }
+        else {
+        if(so_tieu_thu<=50){
+            Sum_money = so_tieu_thu * 1549;
+        }
+         else if(so_tieu_thu<=100){
+            Sum_money = so_tieu_thu * 1600;
+         }
+         else if(so_tieu_thu<=200){
+            Sum_money = so_tieu_thu * 1858;
+         }
+         else if(so_tieu_thu<=300){
+            Sum_money = so_tieu_thu * 2340;
+         }
+         else if(so_tieu_thu<=400){
+            Sum_money = so_tieu_thu * 2610;
+         }
+         else {
+            Sum_money = so_tieu_thu * 2701;
+         }
+         let ketQua = Sum_money.toString() + 'VNĐ'
+         document.write('Tổng số tiền điện tiêu thụ của bạn là: ' + ketQua);
+        }
+    </script>
+</body>
+</html>

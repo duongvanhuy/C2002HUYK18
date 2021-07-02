@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let number = prompt('Nhập vào 1 số');
+        let Arrays = [];
+        let sum=0
+        let sum_duoi=0
+        let sum_tren=0;
+        let sumEven =0;
+        let sumCheo_chinh =0;
+        let sumCheo_phu = 0;
+        let sum_bien =0;
+        let taoTable = '<table border =2>';
+        function taoMang(number){
+            for(let i=0; i< number; i++){
+                Arrays[i] =[];
+                taoTable +='<tr>';
+                for(let j=0; j < number; j++){
+                   
+                    let k = number - i-1;
+                    Arrays[i][j] = Math.floor(Math.random()*81)+10;
+                     // tổng của ma trận
+                     sum += Arrays[i][j];
+                    taoTable += '<td>' + Arrays[i][j] + '</td>';
+                //    tính tổng chẵn
+                    if(Arrays[i][j] % 2==0){
+                        sumEven += Arrays[i][j];
+                    }
+                    // tính tổng chéo chính
+                    if(i ==j){
+                        sumCheo_chinh +=Arrays[i][j];
+                    }
+                    //  tính tổng chéo phụ
+                    if(j==k){
+                        sumCheo_phu +=Arrays[i][j];
+                    }
+                    // Tính tổng biên
+                    switch(i){
+                        case 0:sum_bien+=Arrays[i][j];
+                        break;
+                        case number-1: sum_bien+=Arrays[i][j];
+                    }
+                    if(j==0 && i >0 && i< number-1){
+                        sum_bien+=Arrays[i][j];
+                    }
+                    if(j==number-1 && i>1 && i< number-1){
+                        sum_bien+=Arrays[i][j];
+                    }
+                    // 
+                    
+
+                }
+                taoTable += '</tr>';
+            }
+            //  tổng các phần tử tam giác trên
+            for(let i=0; i< number-1;i++){
+                 
+                let k=1;
+                if(i==0){
+                    for(k; k< number-1; k++){
+                        sum_tren +=Arrays[i][k];
+                    }
+                   
+                    // // number++;
+                }else{
+                      k++
+                    for(k; k< number; k++){
+                        sum_tren +=Arrays[i][k];
+                    }
+                }     
+            }
+            //  sum trên
+            sum_tren +=sumCheo_chinh;
+            // tổng các phần tử tam giác dưới
+            sum_duoi = sum + sumCheo_chinh - sum_tren  ;
+
+            taoTable +='</table>'
+            document.write(taoTable + '<br>');;
+            document.write('Tổng các số chẵn có trong mảng là: '+sumEven+ '<br>');
+            document.write('Tổng các số trong đường chéo chính : '+sumCheo_chinh+ '<br>');
+            document.write('Tổng các số trong đường chéo phụ: '+sumCheo_phu+ '<br>');
+            document.write('Tổng các số hạng ở đường biên là: '+sum_bien+ '<br>');
+            document.write('Tổng các số hạng của tam giác trên là: '+sum_tren+ '<br>');
+            document.write('Tổng các số hạng của tam giác dưới là: '+sum_duoi+ '<br>');
+            document.write('Tổng các số hạng : '+sum+ '<br>');
+        }
+        taoMang(number);
+    </script>
+</body>
+</html>

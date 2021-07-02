@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm tất cả các số nguyên tố </title>
+</head>
+<body>
+    <script>
+        let arr = [];
+        let check = true;
+        function Sum_so_nguyen_to(number){
+            for(let i=3; i <= number; i++){
+                check = true;
+                for(let j = 2; j < i; j++){
+                    // let kiemtra = i % j;
+                    // if(kiemtra==0){
+                    //     check = false;
+                    //     break;
+                    // }
+                    if(i % j == 0){
+                        check = false;
+                        break;
+                    }
+                }
+                if(check){
+                    arr.push(i);
+                }   
+            }  
+        }
+        console.log(Sum_so_nguyen_to(100));
+        alert(arr);
+
+
+
+
+
+
+        // function so_nguyen_to(number){
+        //     if( number >= 2){
+        //         if(number ==2){
+        //             return true;
+        //         }
+        //         else{
+
+        //         }
+        //     }else{
+
+        //     }
+        // }
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         class Moblie{
+             constructor(save_word, save_letter, save_word_back, status){
+                 this.save_word = save_word;
+                 this.save_letter = save_letter;
+                 this.save_word_back = save_word_back;
+                 this.status = status;
+             }
+            //   kiểm tra trạng thái điện thoại
+            getStatus(){
+                if(this.status =='turn on'){
+                    alert('Điện thoại đang trong trạng thái hoạt động');
+                }
+                if(this.status == 'turn off'){
+                    alert('Điện thoại đang trong trạng thái nghỉ');
+                }
+                else{
+                    alert('Kiểm tra lại thông tin');
+                }
+            }
+            setStatus(){
+                if(this.status =='turn off'){
+                    alert('Nhấn enter để mở điện thoại');
+                    //  hàm keyCode;
+                    this.status = 'turn on';
+                }
+                if(this.status =='turn on'){
+                    alert('Nhấn enter để tắt điện thoại');
+                    this.status = 'turn off';
+                } 
+            }
+            getRecharge(){
+                alert('Điện thoại đang được nạp năng lượng');
+            }
+            setMessenger(messenger){
+                this.save_word = messenger;
+            }
+
+         }
+    </script>
+</body>
+</html>

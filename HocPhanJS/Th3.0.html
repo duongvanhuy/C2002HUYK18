@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let name = prompt('Nhập tên sinh viên');
+        let diem_thai_do = parseFloat(prompt('Nhập điểm thái độ của sinh viên: '))
+        let diem_thai_TH = parseFloat(prompt('Nhập điểm thực hành của sinh viên: '));
+        let diem_thai_KT = parseFloat(prompt('Nhập điểm kiểm tra của sinh viên: '));
+        let diem_thi = parseFloat(prompt('Nhập điểm thi của sinh viên: '));
+        let diem_qua_trinh = diem_thai_do * 0.2 + diem_thai_TH * 0.4 + diem_thai_KT * 0.4;
+        let tong_diem = (diem_thi + diem_qua_trinh) / 2;
+        let xepLoai = '';
+        if (diem_thai_do > 10 && diem_thai_TH > 10 && diem_thai_KT > 10 && diem_thai_do < 0 && diem_thai_TH < 0 && diem_thai_KT < 0) {
+            alert('Số diểm bạn nhập vào không hợp lệ');
+        } else {
+            if (diem_thai_do < 1 && diem_thai_TH < 1 && diem_thai_KT < 1) {
+                document.write('Tên sinh viên: ' + name + '<br>');
+                document.write('Điểm thái độ: ' + diem_thai_do + '<br>');
+                document.write('Điểm thực hành: ' + diem_thai_TH + '<br>');
+                document.write('Điểm khiểm tra: ' + diem_thai_KT + '<br>');
+                document.write('Điểm quá trình: '+diem_qua_trinh + '<br>');
+                document.writeln('Điểm thi: ' + diem_thi + '<br>');
+                document.write('Tổng điểm: ' + tong_diem + '<br>');
+                if (tong_diem >= 8.5) {
+                    xepLoai = 'A';
+                }
+                else if (tong_diem >= 6.5) {
+                    xepLoai = 'B';
+                }
+                else if (tong_diem >= 5) {
+                    xepLoai = 'C';
+                }
+                else {
+                    xepLoai = 'D';
+                }
+                document.write('Xếp loại: ' + xepLoai + '<br>');
+            }
+            else {
+                document.writeln('Tên sinh viên: ' + name + '<br>');
+                document.writeln('Điểm thái độ: ' + diem_thai_do + '<br>');
+                document.writeln('Điểm thực hành: ' + diem_thai_TH + '<br>');
+                document.write('Điểm khiểm tra: ' + diem_thai_KT + '<br>');
+                document.write('Điểm quá trình: bị cấm thi' + '<br>');
+                document.writeln('Điểm thi:N/A '  + '<br>');
+                document.write('Tổng điểm: N/A' + '<br>');
+                document.write('Xếp loại:N/A'+ '<br>');
+            }
+        }
+    </script>
+</body>
+
+</html>

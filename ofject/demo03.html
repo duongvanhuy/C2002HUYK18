@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let number = prompt('Nhập vào 1 số');
+        // let number_02 = prompt('Nhập vào 1 số để kiểm tra');
+        // let kiemTra = 0;
+        // let sumOdd = 0;
+        // let sumEven = 0;
+        // let giaiThua = 1;
+        // for (let i = 1; i <= number; i++) {
+        //     if (i % 2 != 0) {
+        //         sumOdd += i;
+        //     } else {
+        //         sumEven += i;
+        //     }
+        //     giaiThua *= i;
+        // }
+
+        // document.write('Tổng các số lẽ là: ' + sumOdd + '<br>');
+        // document.write('Tổng các số chẵn là: ' + sumEven + '<br>');
+        // document.write(number + '!' + ' = ' + giaiThua + '<br>');
+
+
+        // for (let j = 2; j <= number_02; j++) {
+        //     for (let i = 1; i < j; i++) {
+        //         if (j % i == 0) {
+        //             kiemTra += i;
+        //         }
+        //     }
+        //     if (kiemTra == j){
+        //         document.write(j + ' là số hoàn hảo'+'<br>');
+        //     }
+        //     kiemTra=0;
+
+        // }
+        let number = prompt('Nhập vào 1 số');
+        let i = 2;
+        let check = false;
+        if (number >= 2) {
+            if (number == 2) {
+                document.write(number + ' là số nguyên tố')
+            }
+            else {
+                while (i < number) {
+                    check = false
+                    if (number % i != 0) {
+                        check = true;
+                    }
+                    else {
+                        document.write(number + ' không là số nguyên tố')
+                        break;
+                    }
+
+                    i++
+                }
+                if (check) {
+                    document.write(number + ' là số nguyên tố')
+                }
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

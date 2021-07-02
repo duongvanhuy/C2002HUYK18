@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        
+        let sumEven = 0;
+        // 
+        let sumOdd = 0;
+        //
+        let sum_3 = 0;
+        // 
+        // 
+        let Sum_hh = 0;
+        // 
+        let check = true;
+        // let Sum_hh =0;
+        // let giaiThua =1;
+        // tinh tổng các số chẵn
+        function SumEven(number_01) {
+            for (let i = 1; i <= number_01; i++) {
+                if (i % 2 == 0) {
+                    sumEven += i;
+                }
+            }
+            return sumEven;
+        }
+        //  Tính tổng các số lẻ
+        function SumOdd(number_02) {
+            for (let i = 1; i <= number_02; i++) {
+                if (i % 2 != 0) {
+                    sumOdd += i;
+                }
+            }
+            return sumOdd;
+        }
+        //  tổng số chia hết cho 3
+        function Sum_3(number_03) {
+            for (let i = 1; i <= number_03; i++) {
+                if (i % 3 == 0) {
+                    sum_3 += i;
+                }
+            }
+            return sum_3;
+        }
+        // giai thừa
+        function giaiThua(number_04) {
+            let giai_Thua=1;
+            for (let i = 1; i <= number_04; i++) {
+                giai_Thua *= i;
+            }
+            return giai_Thua;
+        }
+        // liệt kê Số hoàn hảo
+        function soHoanHao(number_05) {
+            for (let i = 2; i <= number_05; i++) {
+                for (let j = 1; j < i; j++) {
+                    if (i % j == 0) {
+                        Sum_hh += j;
+                    }
+                }
+                if (Sum_hh == i) {
+                    document.write(i + ' là số hoàn hảo' + '<br>');
+                }
+                Sum_hh = 0;
+            }
+
+        }
+        // soHoanHao(number_05);
+        //  liệt kê số nguyên tố
+        function so_nguyen_to(number_06) {
+            if (number_06 >= 2) {
+                if (number_06 == 2) {
+                    document.write(number_06 + ' là số nguyên tố');
+                }
+                else {
+                    for (let i = 3; i <= number_06; i++) {
+                        check = true;
+                        for (let j = 2; j < i; j++) {
+                            if (i % j == 0) {
+                                check = false;
+                                break;
+                            }
+                        }
+                        if(check){
+                            document.write(i + ' là số nguyên tố'+'<br>');
+                        }
+                    }
+                }
+            }
+            else {
+                document.write(number_06 + ' không là số nguyên tố')
+            }
+
+        }
+       document.write("Tổng các số chẵn là: "+SumEven(10) + '<br>') 
+       document.write("Tổng các số lẽ là: "+SumOdd(10) + '<br>')
+       document.write("Tổng các số chia hết cho 3 là: "+Sum_3(20) + '<br>')
+       document.write("5!= "+giaiThua(5) + '<br>')
+        soHoanHao(100 )
+        so_nguyen_to(100);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+<style>
+    .header {
+        border: 1px solid black;
+        width: 600px;
+        padding: 20px 100px;
+    }
+
+    .row {
+        padding: 20px 0;
+    }
+
+    .input_02 {
+        padding: 0 100px;
+    }
+
+    .input_03 {
+        padding: 0 100px;
+    }
+
+    #edit {
+        justify-content: space-between;
+
+    }
+
+    #search {
+        width: 100%;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    #tr_99 {
+        font-size: 30px;
+        padding-left: 60px;
+        /* width: 30px; */
+    }
+
+    #tr_100 {
+        font-size: 30px;
+        padding-left: 15px;
+        /* width: 30px; */
+    }
+</style>
+
+<body>
+
+    <div class="container  header">
+        <div class="row">
+            <div class="col-md-4 ">
+                <div class="row">
+                    <label for="name"><b>Tên sinh viên</b> </label>
+                </div>
+                <div class="row">
+                    <label for="diemQT"><b>Điểm quá trình</b></label>
+                </div>
+                <div class="row">
+                    <label for="diemThi"><b>Điểm thi</b></label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row"><input type="text" id="name" size="31"></div>
+                <div class="row"><input class="input_02" type="number" id="diemQT" min="0" max="10"></div>
+                <div class="row"><input class="input_03" type="number" name="" id="diemThi" min="0" max="10"></div>
+            </div>
+
+        </div>
+        <div class="row" id="edit">
+            <div class="btn btn-success" id="addStudents" onclick="addStudent()">Thêm sinh viên</div>
+            <!-- <select name="" id="" class="btn btn-warning text-light">
+                <option value="" onclick="sortHeight()">Sắp xếp cao => thấp</option>
+                <option value="" onclick="sortShort()">Sắp xếp thấp => cao</option>
+                <option value="" onclick="sortABC()">Sắp xếp theo tên</option>
+            </select> -->
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                    data-toggle="dropdown" aria-expanded="false">
+                    Sắp xếp thông tin
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                    <li><a class="dropdown-item active" href="#" onclick="sortHeight()">Sắp xếp cao => thấp</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="sortLow()">Sắp xếp thấp => cao</a></li>
+                    <li><a class="dropdown-item" href="#" onclick='sortABC()'>Sắp xếp theo tên</a></li>
+
+                </ul>
+            </div>
+
+
+        </div>
+
+        <div class="row">
+            <input itemid="search" type="text" name="" id="search" onkeyup="search()"
+                placeholder="tìm kiếm sinh viên...">
+        </div>
+
+
+
+    </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <!-- </form> -->
+            <table class="table table-striped table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>#MÃ SỐ</th>
+                        <th>TÊN SV</th>
+                        <th>ĐIỂM QT</th>
+                        <th>ĐIỂM THI</th>
+                        <th>TỔNG ĐIỂM</th>
+                        <th>CHỈNH SỬA</th>
+                        <th>XÓA</th>
+                    </tr>
+                <tbody id="after_run">
+                </tbody>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <script>
+        let students = [];
+        let xeploai = '';
+        let index = -1;
+        class student {
+            constructor(id, name, diemQT, diemTHI) {
+                this.id = id;
+                this.name = name;
+                this.diemQT = diemQT;
+                this.diemTHI = diemTHI;
+            }
+            sumTest() {
+                let sum = (this.diemQT + this.diemTHI) / 2;
+                return sum;
+            }
+        }
+        function init() {
+            let student_01 = new student(1, 'Huy', 8, 9);
+            let student_02 = new student(2, 'Long', 9, 9);
+            let student_03 = new student(3, 'An', 9, 10);
+            let student_04 = new student(4, 'Minh', 10, 10);
+            let student_05 = new student(5, 'Quốc', 7, 9);
+            let student_06 = new student(6, 'Huyền', 9, 9);
+            let student_07 = new student(7, 'Tân', 9, 6);
+            let student_08 = new student(8, 'Hân', 9, 10);
+            let student_09 = new student(9, 'Bảo', 5, 7);
+            let student_10 = new student(10, 'Tuấn', 6, 3);
+            students.push(student_01, student_02, student_03, student_04, student_05,
+                student_06, student_07, student_08, student_09, student_10);
+        }
+
+        let show_01 = document.getElementById('after_run');
+        //  HIỆN THỊ THÔNG TIN SINH VIÊN
+        function showTT(students) {
+            for (let i = 0; i < students.length; i++) {
+                show_01.innerHTML += `
+                <tr> 
+                    <td>${i + 1}</td>
+                    <td>${students[i].id}</td>
+                    <td>${students[i].name}</td>
+                    <td>${students[i].diemQT}</td>
+                    <td>${students[i].diemTHI}</td>
+                    <td>${students[i].sumTest()}</td>
+                    <td><a id='tr_99' class='text-warning' onclick='editTT(${students[i].id})'> <i  class="fa fa-pencil-square-o  aria-hidden="true"></i><a></td>
+                    <td><a id='tr_100' class='text-success' onclick='removeStudent(${students[i].id})'> <i class="fa fa-trash-o" aria-hidden="true"></i><a></td>        
+                </tr>
+                `;
+            }
+        }
+        //  THÊM SINH VIÊN
+        function addStudent() {
+            let table = document.getElementById('after_run');
+            let tr = table.getElementsByTagName('tr');
+            let td = ''
+
+            for (let i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName('td')[1];
+                td = 2 + i;
+            }
+            let name = document.getElementById('name').value;
+            let myName = myFormat(name);
+            let diemQT = parseInt(document.getElementById('diemQT').value)
+            let diemThi = parseInt(document.getElementById('diemThi').value)
+            if (diemQT >= 0 && diemQT <= 10 && diemThi >= 0 && diemThi <= 10 && name != null) {
+                let stu = new student(td, myName, diemQT, diemThi);
+                // kiểm tra ID nhập vào không được trùng
+                if (index == -1) {
+                    students.push(stu);
+                }
+                else {
+
+                    students[index].name = myName;
+
+                    students[index].diemQT = diemQT;
+                    students[index].diemTHI = diemThi;
+                    index = -1;
+                    document.getElementById('addStudents').innerHTML = 'Thêm sinh viên'
+                }
+                $('#after_run tr').remove();
+                showTT(students);
+                document.getElementById('name').value = '';
+                document.getElementById('diemQT').value = 0;
+                document.getElementById('diemThi').value = 0;
+            } else {
+                alert('Thông tin  không hợp lệ!!!')
+            }
+
+        }
+        function myFormat(name) {
+            let myString = name.toLowerCase().split(' ');
+            for (let i = 0; i < myString.length; i++) {
+                myString[i] = myString[i].charAt(0).toUpperCase() + myString[i].substring(1);
+            }
+            return myString.join(' ');
+        }
+        // tìm kiếm sinh viên
+        function search() {
+            let value_name = document.getElementById('search').value;
+            let up_value_name = value_name.toUpperCase();
+            let txtValue = '';
+            //  định dạng giá trị nhập vào không phân biệt bởi dấu cách
+            let tr = show_01.getElementsByTagName('tr');
+            for (let i = 0; i < tr.length; i++) {
+                //  duyệt qua hết thẻ tr. 
+                //  mình muốn tìm thông tin thông qua name thì phải sử dựng cột name tương ứng với td thứ 1.
+                let td = tr[i].getElementsByTagName('td')[2];
+                //   nếu có giá trị(data)
+                if (td) {
+                    //  muốn lấy giá trị thằng td thì phải làm 1 trong các cách thức sau:
+                    // innerText, textContent
+                    // this.text() trong jquery
+                    txtValue = td.innerText || td.textContent;
+                    if (txtValue.toUpperCase().indexOf(up_value_name) > -1) {
+                        tr[i].style.display = '';
+                    }
+                    else {
+                        tr[i].style.display = 'none';
+                    }
+                }
+            }
+        }
+        //  xóa sinh viên khỏi danh sách
+        function removeStudent(id) {
+            // giải thích mã code dưới:
+            //  students.map(x=>{return x.id})
+            //  cái code trêm sẽ bằng students.map(function(x){
+            //  return x.id})
+            // CÁCH 1
+            // let index = students.map(x => {
+            //     return x.id;
+            // })
+            // let index_01 = index.indexOf(id);
+            // students.splice(index_01, 1);
+            // cách 2
+            let arr = [];
+            for (let i = 0; i < students.length; i++) {
+                arr.push(students[i].id);
+                //    let compare = id.localeCompare(arr[i])
+                //    alert(compare);
+                if (id == arr[i]) {
+                    let index = arr.indexOf(arr[i]);
+                    students.splice(index, 1);
+                    break;
+                }
+            }
+            $('#after_run tr').remove();
+            showTT(students);
+        }
+        // chỉnh sửa thông tin
+        function editTT(id) {
+            // alert(students.length);
+            document.getElementById('name').value = students[id - 1].name;
+            document.getElementById('diemQT').value = students[id - 1].diemQT;
+            document.getElementById('diemThi').value = students[id - 1].diemTHI;
+            document.getElementById('addStudents').innerHTML = 'Sửa thông tin'
+            index = id - 1;
+        }
+        function sortHeight() {
+
+            students.sort(function (a, b) {
+                return b.sumTest() - a.sumTest();
+            })
+
+            $('#after_run tr').remove();
+            for (let i = 0; i < students.length; i++) {
+                show_01.innerHTML += `
+                <tr> 
+                    <td>${i + 1}</td>
+                    <td>${students[i].id}</td>
+                    <td>${students[i].name}</td>
+                    <td>${students[i].diemQT}</td>
+                    <td>${students[i].diemTHI}</td>
+                    <td>${students[i].sumTest()}</td>
+                    <td><a id='tr_99' class='text-warning' onclick='editTT(${students[i].id})'> <i  class="fa fa-pencil-square-o  aria-hidden="true"></i><a></td>
+                    <td><a id='tr_100' class='text-success' onclick='removeStudent(${students[i].id})'> <i class="fa fa-trash-o" aria-hidden="true"></i><a></td>        
+                </tr>
+                `;
+            }
+        }
+        function sortLow() {
+
+            students.sort(function (a, b) {
+                return a.sumTest() - b.sumTest();
+            })
+
+            $('#after_run tr').remove();
+            for (let i = 0; i < students.length; i++) {
+                show_01.innerHTML += `
+            <tr> 
+                <td>${i + 1}</td>
+                <td>${students[i].id}</td>
+                <td>${students[i].name}</td>
+                <td>${students[i].diemQT}</td>
+                <td>${students[i].diemTHI}</td>
+                <td>${students[i].sumTest()}</td>
+                <td><a id='tr_99' class='text-warning' onclick='editTT(${students[i].id})'> <i  class="fa fa-pencil-square-o  aria-hidden="true"></i><a></td>
+                <td><a id='tr_100' class='text-success' onclick='removeStudent(${students[i].id})'> <i class="fa fa-trash-o" aria-hidden="true"></i><a></td>        
+            </tr>
+            `;
+            }
+        }
+        function sortABC() {
+            // let myArrays =[]
+            // for(let i=0; i< students.length;i++){
+            //     let myArray ={
+            //     'id':students[i].id,
+            //     'name':students[i].name,
+            //     'diemQT':students[i].diemQT,
+            //     'diemThi':students[i].diemTHI,
+            //     };
+            //     myArrays.push(myArray);
+            //     // myArrays.push(students[i].name)
+            // }
+            //  myArrays.name.sort();
+            students.sort(function (a, b) {
+                var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+                var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) {
+                    return 1;
+                }
+
+                // names must be equal
+                return 0;
+            });
+
+
+            $('#after_run tr').remove();
+            for (let i = 0; i < students.length; i++) {
+                show_01.innerHTML += `
+            <tr> 
+                <td>${i + 1}</td>
+                <td>${students[i].id}</td>
+                <td>${students[i].name}</td>
+                <td>${students[i].diemQT}</td>
+                <td>${students[i].diemTHI}</td>
+                <td>${students[i].sumTest()}</td>
+                <td><a id='tr_99' class='text-warning' onclick='editTT(${students[i].id})'> <i  class="fa fa-pencil-square-o  aria-hidden="true"></i><a></td>
+                <td><a id='tr_100' class='text-success' onclick='removeStudent(${students[i].id})'> <i class="fa fa-trash-o" aria-hidden="true"></i><a></td>        
+            </tr>
+            `;
+            }
+        }
+
+
+        //  update thông tin sau chỉnh sửa
+        //  xây đựng danh sách sinh viên thi lại;
+        // function retest() {
+        //     let show = document.getElementById('retest');
+        //     for (let i = 0; i < students.length; i++) {
+        //         if (students[i].sumTest() < 5) {
+        //             show.innerHTML += `
+        //         <tr>
+        //             <td>${i + 1}</td>
+        //             <td>${students[i].name}</td>
+        //             <td>${students[i].sumTest()}</td>
+        //         </tr>
+        //         `
+        //         }
+        //     }
+        // }
+        // 
+        //  xây dựng hàm xếp loại sinh viên
+        //  check thêm điều kiện sum<=10 và sum sum>=0
+        // function xepLoai() {
+        //     let show = document.getElementById('xeploai');
+        //     for (let i = 0; i < students.length; i++) {
+        //         if (students[i].sumTest() >= 8) {
+        //             xeploai = 'A'
+        //         }
+        //         else if (students[i].sumTest() >= 6.5) {
+        //             xeploai = 'B';
+        //         }
+        //         else if (students[i].sumTest() >= 5) {
+        //             xeploai = 'C';
+        //         }
+        //         else {
+        //             xeploai = 'D';
+        //         }
+        //         show.innerHTML += `
+        //         <tr>
+        //             <td>${i + 1}</td>
+        //             <td>${students[i].name}</td>
+        //             <td>${students[i].sumTest()}</td>
+        //             <td>${xeploai}</td>
+        //         </tr>
+        //         `
+        //     }
+        // }
+        //  danh sách sinh viên nhận học bổng ( số lượng 3);
+        // function hocBong() {
+        //     // let show = document.getElementById('hocbong');
+        //     students.sort(function (a, b) {
+        //         return b.sumTest() - a.sumTest();
+        //     })
+        //     for (let i = 0; i < 3; i++) {
+        //         if (students[i].sumTest() >= 8) {
+        //             xeploai = 'A'
+        //         }
+        //         else if (students[i].sumTest() >= 6.5) {
+        //             xeploai = 'B';
+        //         }
+        //         else if (students[i].sumTest() >= 5) {
+        //             xeploai = 'C';
+        //         }
+        //         else {
+        //             xeploai = 'D';
+        //         }
+
+        //         show.innerHTML += `
+        //         <tr>
+        //             <td>${i + 1}</td>
+        //             <td>${students[i].name}</td>
+        //             <td>${students[i].sumTest()}</td>
+        //             <td>${xeploai}</td>
+        //         </tr>
+        //         `
+        //     }
+        // }
+        function run() {
+            init();
+            showTT(students);
+            // retest();
+            // xepLoai();
+            // hocBong();
+
+
+        }
+        run();
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="200" height="200"></canvas>
+</body>
+</html>
+<script>
+    let canvas = document.getElementById('myCanvas');
+    // tạo nét vẽ 2d
+    let txt = canvas.getContext('2d');
+    // tạo font chữ và màu chữ
+    txt.font = '30px Arial';
+    txt.fillStyle = 'Black';
+    // sử dụng hàm fillText để viết chữ và định vị trí của phần tử 150px, 200px
+    // nhớ vị trí của nó nằm trong khoảng không gian phần tử cha được định sẵn
+    txt.fillText('Hello word ', 150, 200);
+</script>

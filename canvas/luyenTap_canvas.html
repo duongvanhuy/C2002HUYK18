@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" height="500" width="500"></canvas>
+</body>
+</html>
+<script>
+    let canvas = document.getElementById('myCanvas');
+    let txt = canvas.getContext('2d');
+    class Cricle{
+        constructor(x,y,color,radius){
+            this.x =x;
+            this.y =y;
+            this.color= color;
+            this.radius = radius;
+            this.moveX =2;
+            this.moveY =1
+        }
+        // chức năng dùng để vẽ
+        draw(txt){
+            txt.beginPath();
+            // dùng để vẽ hình tròn
+            txt.arc(this.x, this.y, this.radius,0 , 2*Math.PI);
+            txt.fillStyle =this.color;
+            txt.fill();
+        }
+        //  chức năng dùng để thay đổi tọa độ tâm
+        setPosition(){
+            this.x += this.moveX;
+            this.y += this.moveY
+        } 
+        //  nếu khi hình tròn chạy để biên( viền nó đến viền biên) thì quay ngược lại
+        getResest(){
+            if((this.x+this.radius) >=500){
+                 this.moveX =-2;
+            }
+            if((this.x - this.radius) <=0){
+                 this.moveX =2;
+            }
+        }
+        // keycode khi bấm vào nút 
+        upSpeedX(){
+            this.moveX +=1;
+        }
+    }
+    let myCanvas = new Cricle(100, 100, 'red', 30);
+    function main(){
+        txt.clearRect(0,0,500,500);
+        myCanvas.draw(txt);
+        myCanvas.setPosition();
+        myCanvas.getResest();
+        requestAnimationFrame(main, 1000)
+    }
+    document.addEventListener('keydown' , upSpeed);
+    function upSpeed(e){
+        switch(e.keyCode){
+            case 37:
+                myCanvas.upSpeedX();
+                break;
+                case 32:
+                    alert(1)
+        }
+    }
+    
+    main();
+    // upSpeed();
+
+</script>

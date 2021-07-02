@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    function MyDate(date, month, year) {
+        this.date = date;
+        this.month = month;
+        this.year = year;
+        this.getDate = function () {
+            return this.date;
+        }
+        this.getMonth = function () {
+            return this.month;
+        }
+        this.getYeaar = function () {
+            return this.year;
+        }
+        this.setDate = function (date) {
+            this.date = date;
+        }
+        this.setMonth = function (month) {
+            this.month = month;
+        }
+        this.setYear = function (year) {
+            this.year = year;
+        }
+        this.setDate = function(date, month, year){
+            this.date = date;
+            this.month= month;
+            this.year=year;
+        }
+        this.toString = function(){
+            let ngay ='';
+            let thang ='';
+            if(this.date<10 ){
+                ngay = '0'+this.date;
+            }
+            if(this.month<10){
+                thang = '0'+this.month;
+            }
+            return ngay + '/' +thang +'/'+ this.year;
+            
+        }
+    }
+    let date = new MyDate(2, 2, 2021);
+    let day = date.getDate();
+    let month = date.getMonth();
+    let year = date.getYeaar();
+    alert(day + '/' + month + '/' + year);
+    date.setDate(10);
+    date.setMonth(10);
+    date.setYear(2022);
+    day = date.getDate();
+    month = date.getMonth();
+    year = date.getYeaar();
+    alert(day + '/' + month + '/' + year);
+    date.setDate(9,8,2021);
+   let chuoi = date.toString();
+   alert(chuoi);
+</script>

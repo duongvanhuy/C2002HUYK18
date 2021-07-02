@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truy xuất Css bằng javaScript</title>
+</head>
+<body>
+    <script> 
+    function showTT(){
+        let name1 = document.getElementById('name').value;
+        let pass1 = document.getElementById('pass').value;
+        let event = document.getElementById('start');
+        if(name1 == ''|| pass1==''){
+            event.innerHTML = 'Bạn chưa nhập đầy đủ thông tin';
+            event.style.color ='red';
+        }
+        else{
+            event.innerHTML= 'Thông tin bạn đang được xác nhận';
+            event.style.color ='blue';
+        }
+    }
+        
+    </script>
+    UsrName: <input type="text" id="name"><br>
+    PassWord: <input type="text" id="pass"><br>
+    <div id="start"></div>
+    <input type="button" onclick="showTT()" value="Gửi">
+</body>
+</html>

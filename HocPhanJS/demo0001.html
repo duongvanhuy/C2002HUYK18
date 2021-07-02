@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function capitalize(str) {
+            let myString = str.toLowerCase().split(' ');
+            for (let i = 0; i < myString.length; i++) {
+                //  biến cái kí tự đầu trong mỗi phần tự của mảng thành kí tự in hoa 
+                // và nhớ phải cộng thêm các phần tử khác trong chuõi 
+              myString[i] = myString[i].charAt(0).toUpperCase() + myString[i].substring(1);
+                    
+            }
+            return myString.join(' ');
+        }
+       document.write(capitalize('hs    áhshs')) ;
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div id="status"></div>
+    <p>Xin chào mọi người</p>
+    <p>Tôi tên là <span id="name"></span></p>
+    <div class="class_rom">Khoa CNTT</div>
+    <div class="class_rom">Lớp CNTT B</div> -->
+    <img src="https://nld.mediacdn.vn/2020/5/29/doi-hoa-tim-5-1590731334546464136746.jpg" alt="" id="img">
+    <div>
+        <button onclick="imgStart()">ảnh ban đầu</button>
+        <button onclick="imgEnd()">ảnh thay đổi</button>
+    </div>
+    
+    <script>
+        // let start = document.getElementById('status');
+        // start.innerHTML = 'Bài DEMO đầu tiên';
+        // let hello = document.getElementsByTagName('p');
+        // let name = document.getElementById('name')
+        // name.innerHTML = ' Huy';
+        // hello[0].innerHTML = 'Tôi xin tự giới thiệu!!!!';
+        // let class_rom = document.getElementsByClassName('class_rom');
+        // class_rom[0].innerHTML = 'Khoa CNTT K18';
+        function imgStart(){
+            let img = document.getElementById('img').src= 'https://nld.mediacdn.vn/2020/5/29/doi-hoa-tim-5-1590731334546464136746.jpg';
+
+
+        }
+        function imgEnd(){
+            let img = document.getElementById('img').src= 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fphunu.nld.com.vn%2Fchuyen-trang-phu-nu%2Fcheck-in-doi-hoa-tim-chup-nhung-buc-anh-dep-de-doi-20200529130500231.htm&psig=AOvVaw3WrCYHK5N6uJWzxuI8exgC&ust=1625015982925000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCKiFm-Lnu_ECFQAAAAAdAAAAABAD';
+            img.style.height = 200;
+
+        }
+
+
+    </script>
+</body>
+</html>

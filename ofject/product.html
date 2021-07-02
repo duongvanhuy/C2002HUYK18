@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function Product(id, name, price){
+        this.id= id;
+        this.name =name;
+        this.price = price;
+        this.toString = function(){
+            return this.id + this.name + this.price;
+        }
+    }
+    let san_pham01 = new Product(127,'cam', 20);
+    let san_pham02 = new  Product(125,'chuối',12);
+    function Cart(id  ){
+        this.id = id
+        // this.product = product;
+        // let arr = [];
+        // this.product = arr.push(product);
+        // this.totalMoney= totalMoney;
+        this.addProduct = function(product){
+            this.product = product;
+            let arr = [];
+            
+            return arr;
+            // this.product = product;
+            // let arr = [];
+            // arr.push(this.product)
+            // return arr;
+        }
+        this.addSanPham = function(){
+            let number = parseInt(prompt('Bạn muốn thêm bao nhiêu sản phẩm'));
+            for(let i =0 ; i < number; i++){
+                arr.push(this.product)
+            }
+        }
+    }
+    let a = new Cart(12)
+    alert(a.addProduct(san_pham01));
+</script>

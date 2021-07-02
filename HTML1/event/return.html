@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câu lệnh return trong Event</title>
+</head>
+<body>
+    <form action="" method="post">
+        UsrName: <input type="text" name="name" id="name"> <br>
+        PassWord: <input type="text" name="PassWord" id="PassWord"> <br>
+        Re PassWord: <input type="text" name="Re-PassWord" id="Re-PassWord"> <br>
+        <input type="submit" value="abc" onclick="return showInfo()">
+        <script>
+            function showInfo(){
+                let name = document.getElementById('name').value;
+                let PassWord =document.getElementById('PassWord').value;
+                let Re_PassWord = document.getElementById('Re-PassWord').value;
+                if(name==''){
+                    alert('Tên đăng nhập không được bỏ trống');
+                    return false;
+                }
+                if(PassWord==''){
+                    alert('Mời bạn nhập mật khẩu');
+                    return false;
+                }
+                if(PassWord!=Re_PassWord){
+                    alert('Mật khẩu không trùng');
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </form>
+</body>
+</html>

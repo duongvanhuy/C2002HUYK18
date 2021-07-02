@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function Circle(radius, color){
+        this.radius = radius;
+        this.color =color;
+        this.getRadius = function(){
+            if(radius >0){
+                return radius;
+            }
+            else{
+                return 'Không xác định';
+            }
+        }
+        this.getArea = function(){
+            return Math.PI * this.radius * this.radius;;
+        }
+    }
+    let Circle01 = new Circle(-3, 'While');
+    document.write( "Hình tròn thứ nhất có bán kính là: " + Circle01.getRadius() + '<br>');
+    document.write( "Diện tích hình tròn là: "+Circle01.getArea() + '<br>');
+    // console.log(Circle01.color)
+    // 
+    let Circle02 = new  Circle(4, 'black');
+    document.write( "Hình tròn thứ hai có bán kính là: "+ Circle02.getRadius() + '<br>');
+    document.write( "Diện tích hình tròn là: "+ Circle02.getArea() + '<br>');
+</script>

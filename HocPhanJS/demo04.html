@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let newArray = []
+        // function showArrays(newArray){
+        //     for( let i=0;  i< newArray.length ; i++){
+        //         document.write(newArray[i]+'<br>');
+        //     }
+        // }
+        // let arrays = ['một','hai','ba','bốn','năm','sáu'];;
+        // showArrays(arrays)
+
+
+        //  tổng các số chẵn
+        // let number = parseInt(prompt('Nhập vào 1 số')) ;
+        // let sum_even=0;
+        // function sumEven(number){
+        //     for(let i=2; i<= number; i +=2 ){
+        //         sum_even += i;
+        //     }
+        //     return sum_even;
+        // }
+        // document.write('Tổng các phần tử chẵn của số tự nhiên bé hơn '+ number+ " là: "+ sumEven(number)) ;
+
+
+        // đếm số phần tử lẻ trong mảng
+        // let numberOdd = prompt('Nhập vào 1 số');
+        // let dem = 0;
+        // function Kiem_tra_Odd(numberOdd){
+        //     for(let i=1; i<= numberOdd;i+=2){
+        //         dem++;
+        //     }
+        //     return dem;
+        // }
+        // document.write('Số lượng phần tử lẻ của số tự nhiên bé hơn'+ numberOdd+ " là: "+ Kiem_tra_Odd(numberOdd)) ;
+
+
+        // tìm số lớn nhất trong mảng
+        let maxNumber = 10;
+        let newArrays = [];
+        function showArrays(newArrays,maxNumber){
+            
+            for( let i=0; i< maxNumber; i++){
+                newArrays[i] = Math.floor(Math.random()*91)+10;
+               
+            }
+            // alert(newArrays)
+            // let max = newArrays[0];
+            // for( let i=1; i<= maxNumber; i++){
+            //     if(max < newArrays[i]){
+            //         max = newArrays[i];
+            //     }
+            // }
+            // return max;
+            return newArrays;
+        }
+        // document.write('Số lớn nhất trong mảng random là: '+showArrays(newArrays, maxNumber));
+        //  thêm , xóa, sắp xếp.
+        // alert(showArrays(newArrays,maxNumber));
+        let show_array =showArrays(newArrays,maxNumber);
+        console.log(show_array)
+        function chen_phan_tu(){
+            let choosing = parseInt(prompt('Bạn chọn chức năng gì: (thêm chọn 0), (xóa chọn 1), (sắp xếp chọn 2)'));
+            switch(choosing){
+                //  thêm
+                case 0:
+                    let number = prompt('bạn muốn thêm bao nhiêu phần tử')
+                // while(number!=''){
+                    for(let i=0; i< number; i++){
+                        show_array[show_array.length+i]= Math.floor(Math.random()*30)+1
+                    }
+                    return show_array
+
+                // }
+                    break;
+                    // xóa
+                case 1:
+                // let number = prompt('bạn muốn xóa bao nhiêu phần tử')
+                let index = parseInt(prompt('Bạn muốn xóa phần tử có chỉ số index là bao nhiêu'));
+                // while(number!=''){
+                    console.log(show_array);
+
+                    for(let i=0; i< show_array.length; i++){
+                       if(i == index){
+                           for(i; i<show_array.length; i++){
+                                // show_array[i]=show_array[i++];
+                                show_array[i] = show_array[i+1];
+                                
+                           }
+                           show_array.length--;
+                        // 
+                        // alert(show_array[i]+show_array[i++]);
+                        console.log(show_array);
+                       }
+                    }
+                    // return show_array
+                    // alert(show_array);
+
+                // }
+                    break;
+                case 2:
+                    break;
+            }
+            console.log(show_array);
+
+            
+        }
+       chen_phan_tu();
+        
+    </script>
+</body>
+</html>

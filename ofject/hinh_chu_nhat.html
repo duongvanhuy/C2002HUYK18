@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function hinh_chu_nhat(name, chieu_dai, chieu_rong){
+        this.name = name;
+        this.chieu_dai= chieu_dai;
+        this.chieu_rong = chieu_rong;
+        this.getCV = function(){
+            return (this.chieu_dai + this.chieu_rong)*2;
+        }
+        this.getDT = function(){
+            return this.chieu_dai*this.chieu_rong;
+        }
+        this.toString = function(){
+            return 'hình chữ nhật '+ this.name +'<br>' 
+                    +'Có chu vi là: '+ this.getCV() + '<br>' +'Có diện tích là: '+ this.getDT() +'<br>'
+        }
+    }
+    let first = new hinh_chu_nhat('A', 20, 10);
+    let second = new hinh_chu_nhat('B', 25, 15);
+    document.write(first.toString());
+    document.write(second.toString());
+</script>

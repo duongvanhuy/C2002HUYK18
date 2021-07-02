@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let arr = [];
+        // let show = '<table> boder =2';
+        // let number = parseInt(prompt('Nhập vào số phần tử'));
+        // for( let i =0; i < number; i++){
+        //     arr[i]= [];
+        //     show +='<tr>';
+        //     for( let j =0; j< number;j++ ){
+        //         arr[i][j]= Math.floor(Math.random()*10);
+        //         show += '<td>' + arr[i][j] + '<td>'
+        //     }
+        // }
+
+        // // let a = 0; let b= 10;
+        // let a = parseInt(prompt('Nhập vào số đầu tiên'));
+        // let b = parseInt(prompt('Nhập vào số thứ hai'));
+        // function kiemTra(a,b){
+        //     for(a; a<= b; a++){
+        //         document.write('Số: ' + a + '<br>');
+        //     }
+        // }
+        // kiemTra(a,b);
+        let a = parseInt(prompt('Nhập vào số a'));
+        let b = parseInt(prompt('Nhập vào số b'));
+        let arr =[];
+        // let check = true;
+        function Max5(a, b) {
+            let max = 0;
+            for (a; a <= b; a++) {
+                if (a % 2 == 0 && a % 5 == 0) {
+                    arr.push(a);
+                    for(let j =0; j < arr.length; j++){
+                        if (max < arr[j]) {
+                        max = arr[j];
+                        }
+                    }
+                }
+            }
+            if(arr.length ==0){
+                return 'Không có giá trị cần tìm';
+            }
+                return max;
+        }
+        alert(Max5(a, b));
+    </script>
+</body>
+
+</html>

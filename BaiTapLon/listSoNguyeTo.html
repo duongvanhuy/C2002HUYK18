@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let number = prompt('Nhập vào 1 số');
+        let check = true;
+        let myArays = [];
+        if(number>=2){
+            if(number==2){
+                document.write('Các số nguyên tố có trong dãy là: '+ number);
+            }
+            else{
+                myArays.push(2);
+                for(let i =3; i<= number; i++){
+                    for(let j =2; j< i; j++){
+                        check = true;
+                        if(i%j==0){
+                            check= false;
+                            break;
+                        }
+                    }
+                    if(check){
+                        myArays.push(i);
+                    }
+                }
+                document.write('Các số nguyên tố có trong dãy là: ' + myArays);
+            }
+        }else{
+            document.write('Không có số nào là số nguyên tố nào trong dãy số cần kiểm tra')
+        }
+        // document.write(myArays)
+    </script>
+</body>
+</html>

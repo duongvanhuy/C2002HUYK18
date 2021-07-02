@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đemo bài đầu tiên</title>
+</head>
+<body>
+    <!-- <label for="sizeArrays">Nhập vào size của mạng</label> -->
+    <!-- <input type="text" name="" id="sizeArrays"> -->
+    <label for="value">Nhập vào giá trị cần xóa khỏi mạng</label>
+    <input type="text" name="" id="value">
+    <button onclick="show()">click me!!!</button>
+    <!-- <button onclick="main()" id="main-02">Kiểm tra!!!</button> -->
+    <div id="input"></div>
+    <div id="remove"></div>
+    <div id="show"></div>
+    <script>
+        function generateArray(size){
+            let myArrays =[];
+            for(let i=0; i< size; i++){
+                myArrays[i] = Math.floor(Math.random()*81)+10;
+            }
+            return myArrays;
+        }
+        // 
+        function printArray(arr){
+           let myArrays= arr.join('-');
+            return myArrays;
+        }
+        // 
+        function find(value,arr){
+            let check =true;
+            for(let i=0; i<arr.length;i++){
+                check =true;
+                if(value===arr[i]){
+                    return i;
+                }
+                else{
+                    check =false;
+                }
+            }
+            if(check==false){
+                return -1
+            }
+        }
+        // 
+        function removeAll(value, arr){
+            let check = true;
+            for(let i=0; i< arr.length; i++){
+                check = true;
+                if(value===arr[i]){
+                    arr.splice(i,1);
+                    continue;
+                }else{
+                    check =false;
+                }
+            }
+            if(check){
+                return arr;
+            }
+            else{
+                return -1
+            }
+        };
+        function main(){
+            let size = prompt('Nhập vào size của mạng')
+            if(size>0){
+                generateArray(size);
+                let myArrays =generateArray(size);
+                let show =printArray(myArrays);
+                 document.getElementById('input').innerHTML = show;
+                 let value = document.getElementById('value').value
+                if(value>0){
+                    let removeElet =removeAll(value,myArrays)
+                    let showTT = document.getElementById('show');
+                    document.getElementById('remove').innerHTML =removeElet;
+                }
+                else{
+                    return false;
+                }
+            }
+           
+        }
+        main();
+    </script>
+</body>
+</html>

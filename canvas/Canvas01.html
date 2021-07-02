@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px red solid;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" height="500" width="500" ></canvas>
+</body>
+</html>
+<script>
+    let canvas = document.getElementById('myCanvas');
+    let txt = canvas.getContext('2d');
+    class hinhCN{
+        constructor(x, y, heigh, width, color){
+            this.x= x;
+            this.y =y;
+            this.heigh =heigh;
+            this.width = width;
+            this.color = color;
+        }
+        draw(txt){
+            //  hàm fillRect dùng để vẽ hình chữ nhật
+            txt.fillRect(this.x, this.y, this.heigh, this.width);
+            txt.fillStyle = this.color;
+            console.log(this.color)
+            txt.fill();
+        }
+    }
+    
+    let mycanvas = new hinhCN(225, 450, 50, 50,'red');
+    txt.clearRect(0,0,500,500);
+    mycanvas.draw(txt);
+    let myCanvas_number01 = new hinhCN(235,420 ,30,30,'red');
+    myCanvas_number01.draw(txt)
+    let myCanvas_number02 = new hinhCN(245,410 ,10,10,'blue');
+    myCanvas_number02.draw(txt)
+</script>
